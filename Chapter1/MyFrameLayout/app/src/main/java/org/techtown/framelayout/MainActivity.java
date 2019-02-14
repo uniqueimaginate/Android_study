@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageView = (ImageView)findViewById(R.id.imageView);
         imageView2 = (ImageView)findViewById(R.id.imageView2);
-
+        
     }
 
     public void onButton1Clicked(View v){
