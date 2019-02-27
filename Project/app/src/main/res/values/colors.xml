@@ -3,4 +3,6 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#7a1bd8</color>
+    <color name="indigo">#9932CC</color>
+    <color name="pink">#FF69B4</color>
 </resources>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="군도"
+            android:textSize="23dp"
+            android:textStyle="bold"
+            android:padding="5dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_15"
+            android:layout_gravity="center_vertical"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="#d7d7d7">
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="7dp">
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="4.1"
+            android:stepSize="0.1"
+            android:layout_toLeftOf="@+id/rating"
+            style="?android:ratingBarStyleSmall"/>
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8.2"
+            android:textSize="15dp"
+            android:layout_toLeftOf="@+id/peopleNum"
+            android:layout_marginRight="6dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/peopleNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(1,142명 참여)"
+            android:textSize="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="6dp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#d7d7d7"></LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentTop="true"
+            android:text="한줄평"
+            android:textColor="#FF000000"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/text1"
+            android:src="@drawable/ic_review_selected" />
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF561D"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:text="작성하기"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_below="@+id/text1">
+        </ListView>
+
+    </RelativeLayout>
+
+</LinearLayout>

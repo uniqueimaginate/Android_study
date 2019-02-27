@@ -50,7 +50,7 @@ public class CommentView extends LinearLayout {
         comment.setText(Comment);
     }
 
-    public void setBar(int Bar) {
+    public void setBar(float Bar) {
         bar.setRating(Bar);
     }
 

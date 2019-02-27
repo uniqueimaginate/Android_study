@@ -1,18 +1,20 @@
 package org.techtown.project1;
 
 import android.media.Rating;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.RatingBar;
 
-public class Comment {
+public class Comment implements Parcelable {
     String id;
     String comment;
     String time;
     String recommend;
     String report;
-    int bar;
+    float bar;
     int resId;
 
-    public Comment(String id, String comment, String time, String recommend, String report, int bar, int resId) {
+    public Comment(String id, String comment, String time, String recommend, String report, float bar, int resId) {
         this.id = id;
         this.comment = comment;
         this.time = time;
@@ -21,6 +23,42 @@ public class Comment {
         this.bar = bar;
         this.resId = resId;
     }
+
+    public Comment(Parcel src){
+        id = src.readString();
+        comment = src.readString();
+        time = src.readString();
+        recommend = src.readString();
+        report = src.readString();
+        bar = src.readFloat();
+        resId = src.readInt();
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator(){
+        public Comment createFromParcel(Parcel src) {
+            return new Comment(src);
+        }
+        public Comment[] newArray(int size){
+            return new Comment[size];
+        }
+
+    };
+
+    @Override
+    public int describeContents() {
+            return 0;
+            }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(id);
+            dest.writeString(comment);
+            dest.writeString(time);
+            dest.writeString(recommend);
+            dest.writeString(report);
+            dest.writeFloat(bar);
+            dest.writeInt(resId);
+            }
 
     public String getId() {
         return id;
@@ -38,11 +76,11 @@ public class Comment {
         this.comment = comment;
     }
 
-    public int getBar(){
+    public float getBar(){
         return bar;
     }
 
-    public void setBar(int Bar){
+    public void setBar(float Bar){
         this.bar = Bar;
     }
 
@@ -88,4 +126,6 @@ public class Comment {
                 ", report='" + report + '\'' +
                 '}';
     }
+
+
 }

@@ -1,7 +1,10 @@
 package org.techtown.project1;
 
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -30,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
     TextView text1;
     Button seeall;
+
+    ListView listView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,10 +95,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ListView listView = (ListView) findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
 
         adapter = new CommentAdapter();
-        adapter.addItem(new Comment("kym77**", "적당히 재밌다. 오랜만에 잠 안오는 영화 잘 봤네요.", "10분전","추천  0","신고하기", 5 ,R.drawable.user1));
         adapter.addItem(new Comment("kym77**", "적당히 재밌다. 오랜만에 잠 안오는 영화 잘 봤네요.", "10분전","추천  0","신고하기", 5 ,R.drawable.user1));
 
         listView.setAdapter(adapter);
@@ -104,16 +109,39 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"눌렸습니다.", Toast.LENGTH_SHORT ).show();
+                Intent intent = new Intent(getApplicationContext(), CommentWrite.class);
+                startActivityForResult(intent, 101);
             }
         });
         seeall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "눌렸습니다.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ViewAllComment.class);
+                ArrayList<Comment> data = new ArrayList<Comment>();
+                for(int i=0; i<adapter.getCount(); i++) {
+                    data.add((Comment) adapter.getItem(i));
+                }
+                intent.putParcelableArrayListExtra("data", data);
+                startActivityForResult(intent,102);
             }
         });
-
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        if(requestCode == 101){
+            if(intent != null){
+                String contents = intent.getStringExtra("contents");
+                float ratingNum = intent.getFloatExtra("rating", 0.0f);
+                adapter.addItem(new Comment("kym77**", contents, "10분전", "추천  0", "신고하기", ratingNum, R.drawable.user1 ));
+                listView.setAdapter(adapter);
+            }
+        }
+    }
+
     class CommentAdapter extends BaseAdapter {
 
         ArrayList<Comment> items = new ArrayList<Comment>();
